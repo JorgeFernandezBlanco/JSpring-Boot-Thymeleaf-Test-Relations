@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">App Inventario</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+
+                <a class="nav-link" href="/">Inicio</a>   //th:href="@{/}  ésto no funciona
+
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container text-center">
+    <div>
+        <h1>Lista de marcas</h1>
+    </div>
+    <br>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Categorías</th>
+            <th>Acciones</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="marca: ${listaMarcas}">
+            <td th:text="${marca.id} "></td>
+            <td th:text="${marca.nombre} "></td>
+            <td th:text="${marca.categorias} "></td>
+            <td>
+                <a th:href="@{/marcas/editar/{id}(id=${marca.id})}" class="btn btn-info">Editar</a>
+                &nbsp; &nbsp;
+                <a th:href="@{/marcas/eliminar/{id}(id=${marca.id})}" class="btn btn-danger">Eliminar</a>
+            </td>
+
+
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>
+
+
+</body>
+</html>
